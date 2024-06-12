@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Fliegerei.Flugzeug">
+    <Position X="3" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAIAIAAAIAAICAAABAAAAAAEAAAAA=</HashCode>
+      <FileName>Flugzeug.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fliegerei.Sportflugzeug">
+    <Position X="3" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Sportflugzeug.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fliegerei.Segelflugzeug" Collapsed="true">
+    <Position X="0.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Segelflugzeug.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fliegerei.Fluggeraet">
+    <Position X="0.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEEAAAAAAAAAAAAAAIAAUhAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Fluggeraet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fliegerei.Airliner">
+    <Position X="5.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Airliner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

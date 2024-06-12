@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="Reederei.Schiff">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAGAAAAAAAAEAAAAQAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Schiff.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Reederei.Passagierschiff">
+    <Position X="1" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Passagierschiff.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Reederei.Frachtschiff">
+    <Position X="3.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Frachtschiff.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Reederei.Person">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Person.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Reederei.Passagier">
+    <Position X="10.25" Y="2.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Passagier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Reederei.Mitarbeiter">
+    <Position X="7" Y="2.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAACA=</HashCode>
+      <FileName>Mitarbeiter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Reederei.Qualifikation">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Qualifikation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Reederei.Hafen">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Hafen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Reederei.GeoKoordinate">
+    <Position X="0.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GeoKoordinate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Reederei.Route">
+    <Position X="5.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAQBAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Route.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

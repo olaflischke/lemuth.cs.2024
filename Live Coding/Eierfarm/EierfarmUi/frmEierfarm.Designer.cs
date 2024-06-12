@@ -33,6 +33,7 @@
             this.pgdTier = new PropertyGrid();
             this.btnEiLegen = new Button();
             this.btnFuettern = new Button();
+            this.btnNeueGans = new Button();
             this.SuspendLayout();
             // 
             // btnNeuesHuhn
@@ -63,7 +64,7 @@
             // 
             // btnEiLegen
             // 
-            this.btnEiLegen.Location = new Point(206, 105);
+            this.btnEiLegen.Location = new Point(206, 168);
             this.btnEiLegen.Name = "btnEiLegen";
             this.btnEiLegen.Size = new Size(103, 23);
             this.btnEiLegen.TabIndex = 3;
@@ -73,7 +74,7 @@
             // 
             // btnFuettern
             // 
-            this.btnFuettern.Location = new Point(206, 76);
+            this.btnFuettern.Location = new Point(206, 139);
             this.btnFuettern.Name = "btnFuettern";
             this.btnFuettern.Size = new Size(103, 23);
             this.btnFuettern.TabIndex = 4;
@@ -81,11 +82,22 @@
             this.btnFuettern.UseVisualStyleBackColor = true;
             this.btnFuettern.Click += this.btnFuettern_Click;
             // 
+            // btnNeueGans
+            // 
+            this.btnNeueGans.Location = new Point(206, 41);
+            this.btnNeueGans.Name = "btnNeueGans";
+            this.btnNeueGans.Size = new Size(103, 23);
+            this.btnNeueGans.TabIndex = 5;
+            this.btnNeueGans.Text = "Neue Gans";
+            this.btnNeueGans.UseVisualStyleBackColor = true;
+            this.btnNeueGans.Click += this.btnNeueGans_Click;
+            // 
             // frmEierfarm
             // 
             this.AutoScaleDimensions = new SizeF(7F, 15F);
             this.AutoScaleMode = AutoScaleMode.Font;
             this.ClientSize = new Size(321, 263);
+            this.Controls.Add(this.btnNeueGans);
             this.Controls.Add(this.btnFuettern);
             this.Controls.Add(this.btnEiLegen);
             this.Controls.Add(this.pgdTier);
@@ -103,5 +115,6 @@
         private PropertyGrid pgdTier;
         private Button btnEiLegen;
         private Button btnFuettern;
+        private Button btnNeueGans;
     }
 }

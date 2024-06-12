@@ -8,7 +8,7 @@ public class Ei
     public double Gewicht2;
 
     // Konstruktor für ein Ei
-    public Ei(Huhn mutter)
+    public Ei(IEiLeger mutter)
     {
         Random zufall = new Random();
 
@@ -69,7 +69,7 @@ public class Ei
 
     public EiFarbe Farbe { get; set; }
 
-    public Huhn Mutter { get; set; }
+    public IEiLeger Mutter { get; set; }
 }
 
 public enum EiFarbe

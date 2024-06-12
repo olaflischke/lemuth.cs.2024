@@ -1,20 +1,19 @@
 ﻿namespace EierfarmBl;
 
-public class Huhn
+public class Huhn : Gefluegel
 {
-    public Huhn()
+    public Huhn() : base("Neues Huhn")
     {
-        this.Name = "Neues Huhn";
         this.Gewicht = 1000;
     }
 
-    
-    public string Name { get; set; }
-    public Guid Id { get; set; } = Guid.NewGuid();
-    public double Gewicht { get; set; }
-    public List<Ei> Eier { get; set; }
+    public Huhn(string name) : this()
+    {
+        this.Name = name;
+    }
 
-    public void Fressen()
+
+    public override void Fressen()
     {
         if (this.Gewicht < 3000)
         {
@@ -23,9 +22,9 @@ public class Huhn
         }
     }
 
-    public void EiLegen()
+    public override void EiLegen()
     {
-        if (this.Gewicht > 2000)
+        if (this.Gewicht > 1500)
         {
             Ei ei = new Ei(this);
             //{
