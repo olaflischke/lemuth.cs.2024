@@ -5,7 +5,9 @@ VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EzbWaehrungenDal", "EzbWaehrungenDal\EzbWaehrungenDal.csproj", "{3FA1D5C4-8503-46FE-92FF-52FD52879BD5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EzbWaehrungenDalUnitTests", "EzbWaehrungenDalUnitTests\EzbWaehrungenDalUnitTests.csproj", "{2E643E05-23E5-44F4-BC4E-32B7B57722B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EzbWaehrungenDalUnitTests", "EzbWaehrungenDalUnitTests\EzbWaehrungenDalUnitTests.csproj", "{2E643E05-23E5-44F4-BC4E-32B7B57722B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EzbWaehrungenUi", "EzbWaehrungenUi\EzbWaehrungenUi.csproj", "{9E9DB962-6EA8-4323-B7E1-C0697EA66C09}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{2E643E05-23E5-44F4-BC4E-32B7B57722B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E643E05-23E5-44F4-BC4E-32B7B57722B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E643E05-23E5-44F4-BC4E-32B7B57722B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E9DB962-6EA8-4323-B7E1-C0697EA66C09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E9DB962-6EA8-4323-B7E1-C0697EA66C09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E9DB962-6EA8-4323-B7E1-C0697EA66C09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E9DB962-6EA8-4323-B7E1-C0697EA66C09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -15,7 +15,16 @@ namespace EzbWaehrungenDalUnitTests
         [Test]
         public void KannArchivInitialisieren()
         {
-            Archiv archiv=new Archiv(url);
+            Archiv archiv = new Archiv(url);
+
+            Handelstag? handelstag = archiv.Handelstage.FirstOrDefault();
+            if (handelstag != null)
+            {
+                Waehrung usd = handelstag.Waehrungen.FirstOrDefault();
+
+
+                Console.WriteLine($"{usd.Symbol}: {usd.EuroKurs}");
+            }
 
             Assert.AreEqual(GetAttributeCount("time"), archiv.Handelstage.Count);
         }

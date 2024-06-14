@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EierfarmBl", "EierfarmBl\Ei
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EierfarmUi", "EierfarmUi\EierfarmUi.csproj", "{876C5771-9AF4-4483-9B78-3713D828DDB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fliegerei", "Fliegerei\Fliegerei.csproj", "{308B2497-95B2-4DB9-861F-7FEFEF401EC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fliegerei", "Fliegerei\Fliegerei.csproj", "{308B2497-95B2-4DB9-861F-7FEFEF401EC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,12 +21,11 @@ Global
 		{2287E547-BB02-43D2-A37D-F128FF771E8E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{876C5771-9AF4-4483-9B78-3713D828DDB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{876C5771-9AF4-4483-9B78-3713D828DDB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{876C5771-9AF4-4483-9B78-3713D828DDB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{876C5771-9AF4-4483-9B78-3713D828DDB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{876C5771-9AF4-4483-9B78-3713D828DDB6}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{876C5771-9AF4-4483-9B78-3713D828DDB6}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{308B2497-95B2-4DB9-861F-7FEFEF401EC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{308B2497-95B2-4DB9-861F-7FEFEF401EC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{308B2497-95B2-4DB9-861F-7FEFEF401EC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{308B2497-95B2-4DB9-861F-7FEFEF401EC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -12,7 +12,7 @@ namespace EierfarmBl
             this.Name = name;
         }
 
-        public List<Ei> Eier { get; set; } = new List<Ei>();
+        public List<Ei> Eier { get; set; } //= new List<Ei>();
 
         public double Gewicht { get; set; }
 
