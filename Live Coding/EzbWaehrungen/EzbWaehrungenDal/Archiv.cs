@@ -19,7 +19,8 @@ public class Archiv
         var q = document.Root?.Descendants()
                             .Where(xe => xe.Name.LocalName == "Cube" && xe.Attributes().Count() == 1)
                             // Projektion
-                            .Select(xe => new Handelstag() { Datum = Convert.ToDateTime(xe.Attribute("time")?.Value) });
+                            .Select(xe => new Handelstag(xe));
+                            //.Select(xe => new Handelstag() { Datum = Convert.ToDateTime(xe.Attribute("time")?.Value) });
 
 
         //List<Handelstag> tage = new List<Handelstag>();

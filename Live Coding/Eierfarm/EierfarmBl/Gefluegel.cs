@@ -22,5 +22,10 @@ namespace EierfarmBl
 
         public abstract void Fressen();
         public abstract void EiLegen();
+
+        public override string ToString()
+        {
+            return $"Ich heiße {Name}";
+        }
     }
 }

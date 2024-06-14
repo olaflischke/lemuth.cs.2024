@@ -34,6 +34,8 @@
             this.btnEiLegen = new Button();
             this.btnFuettern = new Button();
             this.btnNeueGans = new Button();
+            this.btnLaden = new Button();
+            this.btnSpeichern = new Button();
             this.SuspendLayout();
             // 
             // btnNeuesHuhn
@@ -48,6 +50,8 @@
             // 
             // cbxTiere
             // 
+            this.cbxTiere.DisplayMember = "Name";
+            this.cbxTiere.DropDownStyle = ComboBoxStyle.DropDownList;
             this.cbxTiere.FormattingEnabled = true;
             this.cbxTiere.Location = new Point(70, 13);
             this.cbxTiere.Name = "cbxTiere";
@@ -64,7 +68,7 @@
             // 
             // btnEiLegen
             // 
-            this.btnEiLegen.Location = new Point(206, 168);
+            this.btnEiLegen.Location = new Point(206, 128);
             this.btnEiLegen.Name = "btnEiLegen";
             this.btnEiLegen.Size = new Size(103, 23);
             this.btnEiLegen.TabIndex = 3;
@@ -74,7 +78,7 @@
             // 
             // btnFuettern
             // 
-            this.btnFuettern.Location = new Point(206, 139);
+            this.btnFuettern.Location = new Point(206, 99);
             this.btnFuettern.Name = "btnFuettern";
             this.btnFuettern.Size = new Size(103, 23);
             this.btnFuettern.TabIndex = 4;
@@ -92,11 +96,32 @@
             this.btnNeueGans.UseVisualStyleBackColor = true;
             this.btnNeueGans.Click += this.btnNeueGans_Click;
             // 
+            // btnLaden
+            // 
+            this.btnLaden.Location = new Point(206, 182);
+            this.btnLaden.Name = "btnLaden";
+            this.btnLaden.Size = new Size(103, 23);
+            this.btnLaden.TabIndex = 7;
+            this.btnLaden.Text = "Laden";
+            this.btnLaden.UseVisualStyleBackColor = true;
+            // 
+            // btnSpeichern
+            // 
+            this.btnSpeichern.Location = new Point(206, 211);
+            this.btnSpeichern.Name = "btnSpeichern";
+            this.btnSpeichern.Size = new Size(103, 23);
+            this.btnSpeichern.TabIndex = 6;
+            this.btnSpeichern.Text = "Speichern";
+            this.btnSpeichern.UseVisualStyleBackColor = true;
+            this.btnSpeichern.Click += this.btnSpeichern_Click;
+            // 
             // frmEierfarm
             // 
             this.AutoScaleDimensions = new SizeF(7F, 15F);
             this.AutoScaleMode = AutoScaleMode.Font;
             this.ClientSize = new Size(321, 263);
+            this.Controls.Add(this.btnLaden);
+            this.Controls.Add(this.btnSpeichern);
             this.Controls.Add(this.btnNeueGans);
             this.Controls.Add(this.btnFuettern);
             this.Controls.Add(this.btnEiLegen);
@@ -116,5 +141,7 @@
         private Button btnEiLegen;
         private Button btnFuettern;
         private Button btnNeueGans;
+        private Button btnLaden;
+        private Button btnSpeichern;
     }
 }

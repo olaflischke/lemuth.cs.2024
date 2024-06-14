@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Xml.Serialization;
 
 namespace EierfarmBl; // File-scoped namespce = Namespace gilt für gesamte Datei
 
@@ -6,6 +7,12 @@ public class Ei
 {
     // Öffentliches Feld  - meinEi.Gewicht2
     public double Gewicht2;
+
+    // Parameterloser Konstruktor
+    private Ei()
+    {
+
+    }
 
     // Konstruktor für ein Ei
     public Ei(IEiLeger mutter)
@@ -62,13 +69,16 @@ public class Ei
         {
             return Legedatum.AddDays(28);
         }
-        private set { }
+        set { }
     }
 
+    [XmlAttribute]
     public Guid Id { get; set; } = Guid.NewGuid(); // Auto-Property Initializer
 
+    [XmlElement(ElementName = "Color")]
     public EiFarbe Farbe { get; set; }
 
+    [XmlIgnore]
     public IEiLeger Mutter { get; set; }
 }
 

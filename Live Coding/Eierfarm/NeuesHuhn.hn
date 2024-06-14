@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Huhn xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Eier>
+    <Ei Id="ebad1bbf-60b0-4ff6-a299-5d77c33b4848">
+      <Gewicht2>0</Gewicht2>
+      <Gewicht>54</Gewicht>
+      <Legedatum>2024-06-14T09:09:24.2805854+02:00</Legedatum>
+      <Verfallsdatum>2024-07-12T09:09:24.2805854+02:00</Verfallsdatum>
+      <Color>Dunkel</Color>
+    </Ei>
+    <Ei Id="13371419-efba-47b1-bfc2-3e3781183cfc">
+      <Gewicht2>0</Gewicht2>
+      <Gewicht>71</Gewicht>
+      <Legedatum>2024-06-14T09:09:24.4745093+02:00</Legedatum>
+      <Verfallsdatum>2024-07-12T09:09:24.4745093+02:00</Verfallsdatum>
+      <Color>Gruen</Color>
+    </Ei>
+    <Ei Id="8908c117-c814-47d0-966d-e65699941754">
+      <Gewicht2>0</Gewicht2>
+      <Gewicht>56</Gewicht>
+      <Legedatum>2024-06-14T09:09:24.6549325+02:00</Legedatum>
+      <Verfallsdatum>2024-07-12T09:09:24.6549325+02:00</Verfallsdatum>
+      <Color>Gruen</Color>
+    </Ei>
+    <Ei Id="94208afd-d74c-49ed-8e59-3e4572476df2">
+      <Gewicht2>0</Gewicht2>
+      <Gewicht>53</Gewicht>
+      <Legedatum>2024-06-14T09:09:24.8443905+02:00</Legedatum>
+      <Verfallsdatum>2024-07-12T09:09:24.8443905+02:00</Verfallsdatum>
+      <Color>Hell</Color>
+    </Ei>
+  </Eier>
+  <Gewicht>1466</Gewicht>
+  <Id>1295dd83-3473-4b8f-a7e2-5a5550603de9</Id>
+  <Name>Neues Huhn</Name>
+</Huhn>
