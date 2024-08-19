@@ -1,28 +1,110 @@
-﻿<Window x:Class="RssReaderUi.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:RssReaderUi"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+﻿<Window
+    x:Class="RssReaderUi.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:RssReaderUi"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <!--  Haupt-Grid  -->
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-        
-        <Grid Grid.Column="1">
+
+        <!--  Titelbereich  -->
+        <Grid Grid.Row="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="55*"/>
-                <RowDefinition Height="55*"/>
-                <RowDefinition Height="324*"/>
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <Image
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Grid.Column="0"
+                Source="{Binding LogoUrl}" />
+
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="1"
+                FontSize="30"
+                FontWeight="SemiBold"
+                Foreground="Red"
+                Text="{Binding TitleText}" />
+
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="3,0"
+                Text="{Binding Description}"
+                TextAlignment="Center"
+                TextWrapping="Wrap" />
+        </Grid>
+
+        <!--  Meldungsbereich  -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="4*" />
+            </Grid.ColumnDefinitions>
+
+            <ListBox
+                x:Name="lbxMeldungen"
+                Grid.Column="0" 
+                ItemsSource="{Binding Items}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <Run Text="{Binding PublishDate, StringFormat=ddd\, dd.MM. HH:mm}" />
+                            <Run Text="{Binding Title.Text, Mode=OneWay}" />
+                        </TextBlock>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <GridSplitter
+                Grid.Column="1"
+                Width="5"
+                HorizontalAlignment="Center" />
+
+            <!--  DockPanel hat eigenen DataContext  -->
+            <DockPanel
+                Grid.Column="2"
+                DataContext="{Binding ElementName=lbxMeldungen, Path=SelectedItem}"
+                LastChildFill="True">
+                <Image
+                    Width="150"
+                    Height="150"
+                    Margin="5"
+                    VerticalAlignment="Top"
+                    DockPanel.Dock="Left"
+                    Source="{Binding Links[1].Uri}" />
+                <TextBlock
+                    DockPanel.Dock="Top"
+                    FontSize="15"
+                    FontWeight="Bold"
+                    Text="{Binding Title.Text}"
+                    TextWrapping="Wrap" />
+                <TextBlock
+                    DockPanel.Dock="Top"
+                    Text="{Binding Summary.Text}"
+                    TextWrapping="Wrap" />
+                <TextBlock DockPanel.Dock="Top">
+                    <Hyperlink NavigateUri="{Binding Links[0].Uri}" RequestNavigate="Hyperlink_RequestNavigate">Mehr...</Hyperlink>
+                </TextBlock>
+            </DockPanel>
 
         </Grid>
 
-        <TextBlock Text="{Binding Title.Text}" />
-
-        <ListBox Grid.Column="1" ItemsSource="{Binding Items}" />
     </Grid>
 </Window>

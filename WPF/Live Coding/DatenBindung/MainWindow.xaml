@@ -7,10 +7,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="MainWindow"
     Width="296"
-    Height="210"
+    Height="300"
     mc:Ignorable="d">
     <Canvas>
-        <Slider x:Name="slider"
+        <Slider
+            x:Name="slider"
             Canvas.Left="88"
             Canvas.Top="10"
             Width="120"
@@ -19,12 +20,49 @@
             Maximum="250"
             Minimum="10" />
 
-        <TextBox
+        <!--<TextBox
             Canvas.Left="{Binding ElementName=slider, Path=Value}"
             Canvas.Top="40"
             Width="120"
-            Text="{Binding ElementName=slider, Path=Value}"/>
+            Text="{Binding ElementName=slider, Path=Value}"/>-->
 
-        <TextBox Text="{Binding Info}" Canvas.Left="88" Canvas.Top="70" Width="120" />
+        <TextBox
+            Canvas.Left="88"
+            Canvas.Top="40"
+            Width="120"
+            Text="{Binding ElementName=slider, Path=Value}" />
+
+        <TextBox
+            Canvas.Left="88"
+            Canvas.Top="70"
+            Width="120"
+            Text="{Binding ElementName=slider, Path=Value, Mode=Default}" />
+        <TextBox
+            Canvas.Left="88"
+            Canvas.Top="100"
+            Width="120"
+            Text="{Binding ElementName=slider, Path=Value, Mode=OneTime}" />
+        <TextBox
+            Canvas.Left="88"
+            Canvas.Top="130"
+            Width="120"
+            Text="{Binding ElementName=slider, Path=Value, Mode=OneWay}" />
+        <TextBox
+            Canvas.Left="88"
+            Canvas.Top="160"
+            Width="120"
+            Text="{Binding ElementName=slider, Path=Value, Mode=OneWayToSource}" />
+        <TextBox
+            Canvas.Left="88"
+            Canvas.Top="190"
+            Width="120"
+            Text="{Binding ElementName=slider, Path=Value, Mode=TwoWay}"/>
+
+
+        <TextBox
+            Canvas.Left="88"
+            Canvas.Top="250"
+            Width="120"
+            Text="{Binding Info}" />
     </Canvas>
 </Window>
