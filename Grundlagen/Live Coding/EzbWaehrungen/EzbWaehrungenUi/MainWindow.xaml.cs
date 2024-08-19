@@ -23,7 +23,7 @@ namespace EzbWaehrungenUi
 
             try
             {
-                string url = "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90.xml";
+                string url = "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml";
                 Archiv archiv = new Archiv(url);
 
                 this.DataContext = archiv;

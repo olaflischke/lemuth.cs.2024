@@ -36,6 +36,7 @@
             this.btnNeueGans = new Button();
             this.btnLaden = new Button();
             this.btnSpeichern = new Button();
+            this.txtName = new TextBox();
             this.SuspendLayout();
             // 
             // btnNeuesHuhn
@@ -115,11 +116,20 @@
             this.btnSpeichern.UseVisualStyleBackColor = true;
             this.btnSpeichern.Click += this.btnSpeichern_Click;
             // 
+            // txtName
+            // 
+            this.txtName.Location = new Point(70, 238);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new Size(130, 23);
+            this.txtName.TabIndex = 8;
+            this.txtName.TextChanged += this.txtName_TextChanged;
+            // 
             // frmEierfarm
             // 
             this.AutoScaleDimensions = new SizeF(7F, 15F);
             this.AutoScaleMode = AutoScaleMode.Font;
-            this.ClientSize = new Size(321, 263);
+            this.ClientSize = new Size(438, 330);
+            this.Controls.Add(this.txtName);
             this.Controls.Add(this.btnLaden);
             this.Controls.Add(this.btnSpeichern);
             this.Controls.Add(this.btnNeueGans);
@@ -131,6 +141,7 @@
             this.Name = "frmEierfarm";
             this.Text = "Form1";
             this.ResumeLayout(false);
+            this.PerformLayout();
         }
 
         #endregion
@@ -143,5 +154,6 @@
         private Button btnNeueGans;
         private Button btnLaden;
         private Button btnSpeichern;
+        private TextBox txtName;
     }
 }

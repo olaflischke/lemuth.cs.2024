@@ -47,6 +47,8 @@ public partial class frmEierfarm : Form
     private void cbxTiere_SelectedIndexChanged(object sender, EventArgs e)
     {
         pgdTier.SelectedObject = cbxTiere.SelectedItem;
+
+        txtName.Text = ((Gefluegel)cbxTiere.SelectedItem)?.Name;
     }
 
     private void btnFuettern_Click(object sender, EventArgs e)
@@ -74,11 +76,11 @@ public partial class frmEierfarm : Form
         {
             // Benutzer nach Speicherort fragen
             SaveFileDialog saveFileDialog = new SaveFileDialog()
-                                                                {
-                                                                    RestoreDirectory = true,
-                                                                    Filter = "Hühner|*.hn|Gänse|*.gs|Alles|*.*",
-                                                                    FilterIndex = 1
-                                                                };
+            {
+                RestoreDirectory = true,
+                Filter = "Hühner|*.hn|Gänse|*.gs|Alles|*.*",
+                FilterIndex = 1
+            };
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -92,6 +94,15 @@ public partial class frmEierfarm : Form
                     buttons: MessageBoxButtons.OK,
                     icon: MessageBoxIcon.Information);
             }
+        }
+    }
+
+    private void txtName_TextChanged(object sender, EventArgs e)
+    {
+        if (!string.IsNullOrEmpty(txtName.Text))
+        {
+            ((Gefluegel)cbxTiere.SelectedItem).Name = txtName.Text;
+            pgdTier.Refresh();
         }
     }
 }

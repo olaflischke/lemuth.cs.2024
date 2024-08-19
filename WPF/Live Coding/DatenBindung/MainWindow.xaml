@@ -1,0 +1,30 @@
+﻿<Window
+    x:Class="DatenBindung.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:DatenBindung"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="296"
+    Height="210"
+    mc:Ignorable="d">
+    <Canvas>
+        <Slider x:Name="slider"
+            Canvas.Left="88"
+            Canvas.Top="10"
+            Width="120"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Maximum="250"
+            Minimum="10" />
+
+        <TextBox
+            Canvas.Left="{Binding ElementName=slider, Path=Value}"
+            Canvas.Top="40"
+            Width="120"
+            Text="{Binding ElementName=slider, Path=Value}"/>
+
+        <TextBox Text="{Binding Info}" Canvas.Left="88" Canvas.Top="70" Width="120" />
+    </Canvas>
+</Window>
