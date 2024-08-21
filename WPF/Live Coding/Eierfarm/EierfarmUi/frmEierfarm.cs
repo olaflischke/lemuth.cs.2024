@@ -31,18 +31,27 @@ public partial class frmEierfarm : Form
     {
         Huhn huhn = new Huhn();
 
+        huhn.EigenschaftGeaendert += this.Gefluegel_EigenschaftGeaendert;
+
         cbxTiere.Items.Add(huhn);
         cbxTiere.SelectedItem = huhn;
+    }
+
+    private void Gefluegel_EigenschaftGeaendert(object? sender, GefluegelEventArgs e)
+    {
+        MessageBox.Show($"Tier {((Gefluegel)sender).Name} hat die Eigenschaft {e.GeaenderteEigenschaft} geändert!");
+        //pgdTier.SelectedObject = sender;
     }
 
     private void btnNeueGans_Click(object sender, EventArgs e)
     {
         Gans gans = new Gans();
 
+        gans.EigenschaftGeaendert += this.Gefluegel_EigenschaftGeaendert;
+
         cbxTiere.Items.Add(gans);
         cbxTiere.SelectedItem = gans;
     }
-
 
     private void cbxTiere_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -57,7 +66,6 @@ public partial class frmEierfarm : Form
         if (tier != null)
         {
             tier.Fressen();
-            pgdTier.SelectedObject = tier;
         }
     }
 
@@ -66,7 +74,6 @@ public partial class frmEierfarm : Form
         if (cbxTiere.SelectedItem is IEiLeger tier)
         {
             tier.EiLegen();
-            pgdTier.SelectedObject = tier;
         }
     }
 

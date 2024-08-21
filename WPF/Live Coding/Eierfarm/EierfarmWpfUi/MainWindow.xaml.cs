@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using EierfarmBl;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +20,38 @@ namespace EierfarmWpfUi
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void btnNeuesHuhn_Click(object sender, RoutedEventArgs e)
+        {
+            Huhn huhn = new Huhn("Neues Huhn");
+
+            cbxTiere.Items.Add(huhn);
+            cbxTiere.SelectedItem = huhn;
+        }
+
+        private void btnNeueGans_Click(object sender, RoutedEventArgs e)
+        {
+            Gans gans = new Gans() { Name = "Neue Gans" };
+
+            cbxTiere.Items.Add(gans);
+            cbxTiere.SelectedItem = gans;
+        }
+
+        private void btnFuettern_Click(object sender, RoutedEventArgs e)
+        {
+            if (cbxTiere.SelectedItem is Gefluegel tier)
+            {
+                tier.Fressen();
+            }
+        }
+
+        private void btnEiLegen_Click(object sender, RoutedEventArgs e)
+        {
+            if (cbxTiere.SelectedItem is IEiLeger tier)
+            {
+                tier.EiLegen();
+            }
         }
     }
 }
