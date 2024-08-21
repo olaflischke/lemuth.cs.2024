@@ -16,11 +16,12 @@
             Orientation="Horizontal">
             <Label Content="Tier" />
             <ComboBox
-                Name="cbxTiere" DisplayMemberPath="Name"
+                Name="cbxTiere"
                 Canvas.Left="108"
-                Canvas.Top="11" 
+                Canvas.Top="11"
                 Width="146"
-                Height="23" />
+                Height="23"
+                DisplayMemberPath="Name" />
         </StackPanel>
         <StackPanel
             Canvas.Left="66"

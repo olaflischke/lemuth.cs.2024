@@ -10,20 +10,19 @@ namespace EierfarmBl;
 
 public abstract class Gefluegel : IEiLeger, IGefluegel, IEigenschaftGeaendert, INotifyPropertyChanged
 {
-    public event EventHandler<GefluegelEventArgs> EigenschaftGeaendert;
     public event PropertyChangedEventHandler? PropertyChanged;
+    private void OnPropertyChanged([CallerMemberName] string propName = "")
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
+    }
 
+    public event EventHandler<GefluegelEventArgs> EigenschaftGeaendert;
     private void OnEigenschaftGeaendert(string propName)
     {
         if (EigenschaftGeaendert != null)
         {
             EigenschaftGeaendert(this, new GefluegelEventArgs(propName));
         }
-    }
-
-    private void OnPropertyChanged([CallerMemberName]string propName="")
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
     }
 
     public Gefluegel(string name)

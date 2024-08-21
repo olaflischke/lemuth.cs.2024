@@ -1,4 +1,7 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using System.ServiceModel.Syndication;
 using System.Text;
 using System.Windows;
@@ -18,12 +21,69 @@ namespace RssReaderUi
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        public List<SyndicationItem> Items { get; set; }
-        public string TitleText { get; set; }
-        public string Description { get; set; }
-        public string LogoUrl { get; set; }
+        private string _titleText;
+        private string _description;
+        private string _logoUrl;
+        private string _url = "https://www.spiegel.de/schlagzeilen/tops/index.rss";
+        private List<SyndicationItem> _items;
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        private void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public List<SyndicationItem> Items
+        {
+            get
+            {
+                return _items;
+            }
+            set
+            {
+                _items = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string TitleText
+        {
+            get => _titleText;
+            set
+            {
+                _titleText = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+        public string Description
+        {
+            get
+            {
+                return _description;
+            }
+            set
+            {
+                _description = value;
+                OnPropertyChanged();
+            }
+        }
+        public string LogoUrl
+        {
+            get
+            {
+                return _logoUrl;
+            }
+            set
+            {
+                _logoUrl = value;
+                OnPropertyChanged();
+            }
+        }
 
         public MainWindow()
         {
@@ -34,6 +94,7 @@ namespace RssReaderUi
 
             //XmlReader xmlReader = XmlReader.Create("https://www.insuedthueringen.de/topmeldung.rss2.feed");
         }
+
 
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
@@ -51,8 +112,18 @@ namespace RssReaderUi
         }
 
         // URL-Property fürs Binding
-        public string Url { get; set; } = "https://www.spiegel.de/schlagzeilen/tops/index.rss";
-
+        public string Url
+        {
+            get
+            {
+                return _url;
+            }
+            set
+            {
+                _url = value;
+                OnPropertyChanged();
+            }
+        }
         private void btnLaden_Click(object sender, RoutedEventArgs e)
         {
             try

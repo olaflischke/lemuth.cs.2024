@@ -66,6 +66,7 @@ public partial class frmEierfarm : Form
         if (tier != null)
         {
             tier.Fressen();
+            //pgdTier.SelectedObject = tier;
         }
     }
 
@@ -74,6 +75,7 @@ public partial class frmEierfarm : Form
         if (cbxTiere.SelectedItem is IEiLeger tier)
         {
             tier.EiLegen();
+            //pgdTier.SelectedObject = tier;
         }
     }
 
