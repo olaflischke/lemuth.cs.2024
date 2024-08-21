@@ -30,17 +30,9 @@ namespace RssReaderUi
             InitializeComponent();
 
             this.Language = XmlLanguage.GetLanguage(Thread.CurrentThread.CurrentCulture.Name);
-
-            XmlReader xmlReader = XmlReader.Create("https://www.spiegel.de/schlagzeilen/tops/index.rss");
-            //XmlReader xmlReader = XmlReader.Create("https://www.insuedthueringen.de/topmeldung.rss2.feed");
-            SyndicationFeed feed = SyndicationFeed.Load(xmlReader);
-
-            this.Items = feed.Items.OrderByDescending(el => el.PublishDate).ToList();
-            this.TitleText = feed.Title.Text;
-            this.Description = feed.Description.Text;
-            this.LogoUrl = feed.ImageUrl.ToString();
-
             this.DataContext = this;
+
+            //XmlReader xmlReader = XmlReader.Create("https://www.insuedthueringen.de/topmeldung.rss2.feed");
         }
 
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
@@ -56,6 +48,36 @@ namespace RssReaderUi
             };
 
             Process.Start(startInfo);
+        }
+
+        // URL-Property fürs Binding
+        public string Url { get; set; } = "https://www.spiegel.de/schlagzeilen/tops/index.rss";
+
+        private void btnLaden_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                XmlReader xmlReader = XmlReader.Create(this.Url); //(txtUrl.Text);
+
+                SyndicationFeed feed = SyndicationFeed.Load(xmlReader);
+
+                this.Items = feed.Items.OrderByDescending(el => el.PublishDate).ToList();
+                this.TitleText = feed.Title.Text;
+                this.Description = feed.Description.Text;
+                this.LogoUrl = feed.ImageUrl.ToString();
+
+                // DataContext zurücksetzen
+                this.DataContext = null;
+                this.DataContext = this;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(messageBoxText: $"Fehler beim Laden des Feeds:\n\r{ex.Message}",
+                    caption: "Fehler beim Laden",
+                    button: MessageBoxButton.OK,
+                    icon: MessageBoxImage.Error);
+            }
         }
     }
 }

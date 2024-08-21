@@ -12,12 +12,31 @@
     <!--  Haupt-Grid  -->
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
             <RowDefinition Height="100" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
 
+        <DockPanel Grid.Row="0" LastChildFill="True">
+            <Label
+                VerticalAlignment="Center"
+                Content="RSS-Feed:"
+                DockPanel.Dock="Left" />
+            <Button
+                Height="25"
+                Margin="2.5,5"
+                Click="btnLaden_Click"
+                Content="Laden"
+                DockPanel.Dock="Right" />
+            <TextBox
+                x:Name="txtUrl"
+                Height="25"
+                Margin="2.5,5"
+                Text="{Binding Url}" />
+        </DockPanel>
+
         <!--  Titelbereich  -->
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*" />
                 <RowDefinition Height="1*" />
@@ -51,7 +70,7 @@
         </Grid>
 
         <!--  Meldungsbereich  -->
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="5" />
@@ -60,7 +79,7 @@
 
             <ListBox
                 x:Name="lbxMeldungen"
-                Grid.Column="0" 
+                Grid.Column="0"
                 ItemsSource="{Binding Items}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
