@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using RssReaderUi.Extensions;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
@@ -27,7 +28,7 @@ namespace RssReaderUi
         private string _description;
         private string _logoUrl;
         private string _url = "https://www.spiegel.de/schlagzeilen/tops/index.rss";
-        private List<SyndicationItem> _items;
+        private ObservableCollection<SyndicationItem> _items;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -36,7 +37,7 @@ namespace RssReaderUi
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public List<SyndicationItem> Items
+        public ObservableCollection<SyndicationItem> Items
         {
             get
             {
@@ -132,7 +133,7 @@ namespace RssReaderUi
 
                 SyndicationFeed feed = SyndicationFeed.Load(xmlReader);
 
-                this.Items = feed.Items.OrderByDescending(el => el.PublishDate).ToList();
+                this.Items = feed.Items.OrderByDescending(el => el.PublishDate).ToObservableCollection();
                 this.TitleText = feed.Title.Text;
                 this.Description = feed.Description.Text;
                 this.LogoUrl = feed.ImageUrl.ToString();
