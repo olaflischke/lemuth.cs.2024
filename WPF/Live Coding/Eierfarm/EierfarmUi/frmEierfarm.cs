@@ -39,8 +39,8 @@ public partial class frmEierfarm : Form
 
     private void Gefluegel_EigenschaftGeaendert(object? sender, GefluegelEventArgs e)
     {
-        MessageBox.Show($"Tier {((Gefluegel)sender).Name} hat die Eigenschaft {e.GeaenderteEigenschaft} geändert!");
-        //pgdTier.SelectedObject = sender;
+        //MessageBox.Show($"Tier {((Gefluegel)sender).Name} hat die Eigenschaft {e.GeaenderteEigenschaft} geändert!");
+        pgdTier.SelectedObject = sender;
     }
 
     private void btnNeueGans_Click(object sender, EventArgs e)

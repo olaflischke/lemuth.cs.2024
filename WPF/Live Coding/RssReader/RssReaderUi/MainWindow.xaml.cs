@@ -66,9 +66,9 @@ namespace RssReaderUi
                 this.Description = feed.Description.Text;
                 this.LogoUrl = feed.ImageUrl.ToString();
 
-                // DataContext zurücksetzen
-                this.DataContext = null;
-                this.DataContext = this;
+                //// DataContext zurücksetzen
+                //this.DataContext = null;
+                //this.DataContext = this;
 
             }
             catch (Exception ex)

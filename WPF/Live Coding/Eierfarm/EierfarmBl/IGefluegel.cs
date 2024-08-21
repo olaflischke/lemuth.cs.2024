@@ -1,9 +1,11 @@
 ﻿
+using System.Collections.ObjectModel;
+
 namespace EierfarmBl
 {
     public interface IGefluegel
     {
-        List<Ei> Eier { get; set; }
+        ObservableCollection<Ei> Eier { get; set; }
         double Gewicht { get; set; }
 
         void EiLegen();

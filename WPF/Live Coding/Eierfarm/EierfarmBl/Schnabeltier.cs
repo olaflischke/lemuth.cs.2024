@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 
@@ -8,7 +9,7 @@ namespace EierfarmBl;
 public class Schnabeltier : Saeugetier, IEiLeger, IDisposable
 {
     public double Gewicht { get; set; }
-    public List<Ei> Eier { get; set; } = new List<Ei>();
+    public ObservableCollection<Ei> Eier { get; set; } = new ObservableCollection<Ei>();
 
     public void Dispose()
     {

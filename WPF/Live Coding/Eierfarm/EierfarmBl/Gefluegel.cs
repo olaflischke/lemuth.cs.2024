@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace EierfarmBl;
 
-public abstract class Gefluegel : IEiLeger, IGefluegel
+public abstract class Gefluegel : IEiLeger, IGefluegel, IEigenschaftGeaendert, INotifyPropertyChanged
 {
     public event EventHandler<GefluegelEventArgs> EigenschaftGeaendert;
+    public event PropertyChangedEventHandler? PropertyChanged;
 
     private void OnEigenschaftGeaendert(string propName)
     {
@@ -17,13 +21,17 @@ public abstract class Gefluegel : IEiLeger, IGefluegel
         }
     }
 
+    private void OnPropertyChanged([CallerMemberName]string propName="")
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
+    }
 
     public Gefluegel(string name)
     {
         this.Name = name;
     }
 
-    public List<Ei> Eier { get; set; } = new List<Ei>();
+    public ObservableCollection<Ei> Eier { get; set; } = new ObservableCollection<Ei>();
 
     private double _gewicht;
     private Guid id = Guid.NewGuid();
@@ -39,6 +47,7 @@ public abstract class Gefluegel : IEiLeger, IGefluegel
         {
             _gewicht = value;
             OnEigenschaftGeaendert("Gewicht");
+            OnPropertyChanged();
         }
     }
 
@@ -53,6 +62,7 @@ public abstract class Gefluegel : IEiLeger, IGefluegel
         {
             id = value;
             OnEigenschaftGeaendert(nameof(this.Id));
+            OnPropertyChanged();
         }
     }
     public string Name
@@ -65,6 +75,7 @@ public abstract class Gefluegel : IEiLeger, IGefluegel
         {
             name = value;
             OnEigenschaftGeaendert("Name");
+            OnPropertyChanged();
         }
     }
 
