@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35219.272
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiSrceenApp", "MultiSrceenApp\MultiSrceenApp.csproj", "{245E0E83-38B7-4F12-8BAF-935A09BD2D61}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{245E0E83-38B7-4F12-8BAF-935A09BD2D61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{245E0E83-38B7-4F12-8BAF-935A09BD2D61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{245E0E83-38B7-4F12-8BAF-935A09BD2D61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{245E0E83-38B7-4F12-8BAF-935A09BD2D61}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8B81D9C9-86E8-4255-ADFD-B8CAB7B8906E}
+	EndGlobalSection
+EndGlobal

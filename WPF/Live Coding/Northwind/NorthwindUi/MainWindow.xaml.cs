@@ -86,7 +86,42 @@ public partial class MainWindow : Window
                                             .ThenInclude(od => od.Product) // die Products zu den OrderDetails laden
                                             .Where(od => od.CustomerId == tviKunde.Tag.ToString()).ToList(); // Query muss asugeführt werden! (-> Deferred Execution)
 
-            cbxOrders.ItemsSource = qOrdersDesKunden; 
+            cbxOrders.ItemsSource = qOrdersDesKunden;
+        }
+    }
+
+    private void btnEditCustomer_Click(object sender, RoutedEventArgs e)
+    {
+        if (((TreeViewItem)trvCustomers.SelectedItem).Tag != null)
+        {
+            using NorthwindContext context = GetContext();
+            Customer kundeToEdit = context.Customers.Find(((TreeViewItem)trvCustomers.SelectedItem).Tag.ToString());
+
+            AddEditCustomer dlgEditCustomer = new AddEditCustomer(kundeToEdit);
+            if (dlgEditCustomer.ShowDialog() == true)
+            {
+                context.SaveChanges();
+            }
+            else
+            {
+                context.Entry(kundeToEdit).Reload(); // Kunde zurücksetzen
+            }
+        }
+    }
+
+    private void btnAddCustomer_Click(object sender, RoutedEventArgs e)
+    {
+        Customer neuerKunde = new Customer();
+        neuerKunde.Country = "Germany"; // TOD: Land des Knotens eintragen
+
+        AddEditCustomer dlgAddCustomer = new AddEditCustomer(neuerKunde);
+        if (dlgAddCustomer.ShowDialog() == true)
+        {
+            using NorthwindContext context = GetContext();
+
+            context.Customers.Add(neuerKunde);
+
+            context.SaveChanges();
         }
     }
 

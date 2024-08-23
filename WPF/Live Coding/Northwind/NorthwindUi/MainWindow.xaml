@@ -21,6 +21,30 @@
             <ColumnDefinition Width="3*" />
         </Grid.ColumnDefinitions>
 
+        <DockPanel
+            Grid.Row="0"
+            Grid.Column="0"
+            LastChildFill="False">
+            <Button
+                x:Name="btnAddCustomer"
+                Width="23"
+                Height="23" Click="btnAddCustomer_Click"
+                Content="*"
+                DockPanel.Dock="Left" />
+            <Button
+                x:Name="btnEditCustomer"
+                Width="23" Click="btnEditCustomer_Click"
+                Height="23"
+                Content="..\"
+                DockPanel.Dock="Left" />
+            <Button
+                x:Name="btnDeleteCustomer"
+                Width="23"
+                Height="23"
+                Content="X"
+                DockPanel.Dock="Left" />
+        </DockPanel>
+
         <TreeView
             x:Name="trvCustomers"
             Grid.Row="1"
@@ -44,6 +68,22 @@
             x:Name="dgOrderInfo"
             Grid.Row="1"
             Grid.Column="2"
-            ItemsSource="{Binding ElementName=cbxOrders, Path=SelectedItem.OrderDetails}" />
+            AutoGenerateColumns="False"
+            ItemsSource="{Binding ElementName=cbxOrders, Path=SelectedItem.OrderDetails}">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <!--  Eigene Templates für Controls, auch Grid/DataGrid...  -->
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Binding="{Binding Quantity}" Header="Anzahl" />
+                <DataGridTextColumn Binding="{Binding Product.ProductName}" Header="Bezeichnung" />
+                <DataGridTextColumn Binding="{Binding UnitPrice}" Header="Einzelpreis" />
+                <DataGridTextColumn Binding="{Binding Discount}" Header="Rabatt" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

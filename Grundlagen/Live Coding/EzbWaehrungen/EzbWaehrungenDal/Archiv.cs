@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System.Runtime.CompilerServices;
 using System.Xml.Linq;
@@ -18,6 +19,20 @@ public class Archiv
     {
         _logger = logger;
         this.Handelstage = GetData(url);
+
+        SaveToDb();
+    }
+
+    private void SaveToDb()
+    {
+        DbContextOptionsBuilder<WaehrungsContext> builder = new DbContextOptionsBuilder<WaehrungsContext>().UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=WaehrungenDb;Integrated Security=True");
+
+        WaehrungsContext context = new WaehrungsContext(builder.Options);
+
+        context.Database.EnsureCreated();
+
+        context.Handelstage.AddRange(this.Handelstage);
+        context.SaveChanges();
     }
 
     public List<Handelstag>? Handelstage { get; set; }

@@ -5,6 +5,11 @@ namespace EzbWaehrungenDal;
 
 public class Handelstag
 {
+    public Handelstag()
+    {
+
+    }
+
     public Handelstag(XElement handelstagNode)
     {
         this.Datum = Convert.ToDateTime(handelstagNode.Attribute("time")?.Value);
@@ -18,11 +23,14 @@ public class Handelstag
                                 .Select(nd => new Waehrung()
                                 {
                                     Symbol = nd.Attribute("currency").Value,
-                                    EuroKurs = Convert.ToDouble(nd.Attribute("rate").Value, nfiEzb) //CultureInfo.InvariantCulture)
+                                    EuroKurs = Convert.ToDouble(nd.Attribute("rate").Value, nfiEzb), //CultureInfo.InvariantCulture)
+                                    Handelstag = this
                                 });
 
         this.Waehrungen = q.ToList();
     }
+
+    public int Id { get; set; }
 
     public List<Waehrung> Waehrungen { get; set; } = new List<Waehrung>();
 

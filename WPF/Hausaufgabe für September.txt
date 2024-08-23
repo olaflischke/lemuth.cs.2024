@@ -1,0 +1,11 @@
+Erstelle die ChinookDb in LocalDb (Skript siehe https://github.com/olaflischke/sampledata).
+
+Erstelle einen DbContext von EF Core für die ChinookDb (Tipp: Scaffold-DbContext...).
+
+Erstelle eine WPF-UI:
+Links im Treeview: Erste Ebene Genres, zweite Ebene Künstler (Artists), die einen Track aus dem jew. Genre haben
+Oben rechts in der Combobox: Alle Alben des ausgewählten Künstlers
+Im DataGrid: Trackinfos
+
+Bonusaufgabe:
+Dialog zum Editieren eines Künstlers.
