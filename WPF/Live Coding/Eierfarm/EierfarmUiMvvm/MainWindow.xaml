@@ -1,0 +1,103 @@
+﻿<Window
+    x:Class="EierfarmUiMvvm.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:EierfarmUiMvvm"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="329"
+    Height="400"
+    d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}"
+    mc:Ignorable="d">
+    <Canvas>
+        <StackPanel
+            Canvas.Left="50"
+            Canvas.Top="13"
+            Orientation="Horizontal">
+            <Label Content="Tier" />
+            <ComboBox
+                Name="cbxTiere"
+                Canvas.Left="108"
+                Canvas.Top="11"
+                Width="146"
+                Height="23"
+                DisplayMemberPath="Name"
+                ItemsSource="{Binding Tiere}"
+                SelectedItem="{Binding SelectedTier}" />
+        </StackPanel>
+        <StackPanel
+            Canvas.Left="38"
+            Canvas.Top="44"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Orientation="Horizontal">
+            <Label Content="Name" />
+            <TextBox Width="146" Text="{Binding SelectedItem.Name, ElementName=cbxTiere}" />
+        </StackPanel>
+
+        <StackPanel
+            Canvas.Left="50"
+            Canvas.Top="106"
+            Orientation="Horizontal">
+            <Label Content="Eier" />
+            <ListBox
+                Width="146"
+                Height="200"
+                ItemsSource="{Binding ElementName=cbxTiere, Path=SelectedItem.Eier}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <Run Text="{Binding Gewicht, StringFormat=0.0g}" />
+                            <Run Text="{Binding Farbe}" />
+                        </TextBlock>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+
+        <StackPanel
+            Canvas.Left="27"
+            Canvas.Top="75"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Orientation="Horizontal">
+            <Label Content="Gewicht" />
+            <TextBox Width="146" Text="{Binding SelectedItem.Gewicht, ElementName=cbxTiere}" />
+        </StackPanel>
+
+        <Button
+            x:Name="btnNeuesHuhn"
+            Canvas.Left="231"
+            Canvas.Top="16"
+            Width="80"
+            Height="23"
+            Command="{Binding NeuesHuhnCommand}"
+            Content="Neues Huhn" />
+        <Button
+            x:Name="btnNeueGans"
+            Canvas.Left="231"
+            Canvas.Top="44"
+            Width="80"
+            Height="23"
+            Command="{Binding NeueGansCommand}"
+            Content="Neue Gans" />
+        <Button
+            x:Name="btnFuettern"
+            Canvas.Left="231"
+            Canvas.Top="100"
+            Width="80"
+            Height="23"
+            Command="{Binding FuetternCommand}"
+            Content="Füttern" />
+        <Button
+            x:Name="btnEiLegen"
+            Canvas.Left="231"
+            Canvas.Top="128"
+            Width="80"
+            Height="23"
+            Command="{Binding EiLegenCommand}"
+            Content="Ei legen" />
+
+    </Canvas>
+</Window>

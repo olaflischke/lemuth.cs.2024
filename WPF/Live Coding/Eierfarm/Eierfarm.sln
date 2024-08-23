@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EierfarmBl", "EierfarmBl\Ei
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EierfarmUi", "EierfarmUi\EierfarmUi.csproj", "{876C5771-9AF4-4483-9B78-3713D828DDB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EierfarmWpfUi", "EierfarmWpfUi\EierfarmWpfUi.csproj", "{9DC003B1-DDC2-411F-B554-6A43E24DFDA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EierfarmWpfUi", "EierfarmWpfUi\EierfarmWpfUi.csproj", "{9DC003B1-DDC2-411F-B554-6A43E24DFDA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EierfarmUiMvvm", "EierfarmUiMvvm\EierfarmUiMvvm.csproj", "{18DF754C-1567-49A5-B46B-848132A2F65E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{9DC003B1-DDC2-411F-B554-6A43E24DFDA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DC003B1-DDC2-411F-B554-6A43E24DFDA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DC003B1-DDC2-411F-B554-6A43E24DFDA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18DF754C-1567-49A5-B46B-848132A2F65E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18DF754C-1567-49A5-B46B-848132A2F65E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18DF754C-1567-49A5-B46B-848132A2F65E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18DF754C-1567-49A5-B46B-848132A2F65E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
