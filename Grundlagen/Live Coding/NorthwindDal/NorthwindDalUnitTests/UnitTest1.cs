@@ -32,9 +32,35 @@ namespace NorthwindDalUnitTests
 
             Customer? alfki = context1.Customers.Find("ALFKI");  // context1.Customers.Where(cu => cu.CustomerId=="ALFKI").Single();
 
-            alfki.ContactName = "Maria Maier";
+            alfki.ContactName = "Maria Müller";
 
-            context1.SaveChanges();
+            try
+            {
+                context1.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                // Hintergrund: Datensatz in der DB hat sich während der Verarbeitung geändert
+                // Database wins - Daten zurücksetzen
+
+                // CurrentValues/OriginalValues/GetDatabaseValues
+                //context1.Entry(alfki).CurrentValues.SetValues(context1.Entry(alfki).GetDatabaseValues());
+                //context1.Entry(alfki).State = EntityState.Unchanged;
+
+                // besser:
+                context1.Entry(alfki).Reload(); // Aktuelle Daten nochmal laden
+
+                // Client wins
+                context1.Entry(alfki).OriginalValues.SetValues(context1.Entry(alfki).GetDatabaseValues()); // Datenbank-Timestamp in die OriginalValues
+                context1.SaveChanges();
+
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
 
             Assert.Pass();
         }

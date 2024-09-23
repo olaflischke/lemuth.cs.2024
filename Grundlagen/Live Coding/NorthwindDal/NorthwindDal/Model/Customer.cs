@@ -27,7 +27,7 @@ public partial class Customer
 
     public string? Fax { get; set; }
 
-    public byte[]? TimeStamp { get; set; }
+       public byte[]? TimeStamp { get; set; }
 
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
 

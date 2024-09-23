@@ -20,7 +20,7 @@
             Content="Start" />
         <Button
             Name="btnStopp"
-            Canvas.Left="10"
+            Canvas.Left="10" 
             Canvas.Top="38"
             Command="{Binding StopCommand}"
             Content="Stop" />
