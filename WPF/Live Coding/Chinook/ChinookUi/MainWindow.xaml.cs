@@ -1,5 +1,6 @@
 ﻿using ChinookDal.Model;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -27,7 +28,7 @@ namespace ChinookUi
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            ChinookContext context = GetContext(noTracking: true, Console.WriteLine);
+            using ChinookContext context = GetContext(noTracking: true, Console.WriteLine);
 
             List<Genre> qGenres = context.Genres.ToList();
 
@@ -44,27 +45,32 @@ namespace ChinookUi
         {
             if (sender is TreeViewItem aktuell)
             {
-                aktuell.Items.Clear();
+                FillArtistsForGenre(aktuell);
+            }
+        }
 
-                if (aktuell.Tag is Genre genre)
+        private void FillArtistsForGenre(TreeViewItem genreItem)
+        {
+            genreItem.Items.Clear();
+
+            if (genreItem.Tag is Genre genre)
+            {
+                // Alle Artists dieses Genres
+                using ChinookContext context = GetContext(noTracking: false, Console.WriteLine);
+                IQueryable<Artist> qArtists = context.Tracks
+                                                    .Include(tr => tr.Album)
+                                                    .ThenInclude(al => al.Artist)//.AsTracking() 
+                                                    .Where(tr => tr.Genre.GenreId == genre.GenreId)
+                                                    .Select(tr => tr.Album.Artist).Distinct();
+
+                var alben = context.Albums.ToList();
+                var tracks = context.Tracks.ToList();
+
+
+                foreach (Artist item in qArtists.OrderBy(a => a.Name))
                 {
-                    // Alle Artists dieses Genres
-                    ChinookContext context = GetContext(noTracking: false, Console.WriteLine);
-                    IQueryable<Artist> qArtists = context.Tracks
-                                                        .Include(tr => tr.Album)
-                                                        .ThenInclude(al => al.Artist)//.AsTracking() 
-                                                        .Where(tr => tr.Genre.GenreId == genre.GenreId)
-                                                        .Select(tr => tr.Album.Artist).Distinct();
-
-                    var alben = context.Albums.ToList();
-                    var tracks = context.Tracks.ToList();
-
-
-                    foreach (Artist item in qArtists)
-                    {
-                        TreeViewItem tviArtist = new TreeViewItem() { Header = item.Name, Tag = item };
-                        aktuell.Items.Add(tviArtist);
-                    }
+                    TreeViewItem tviArtist = new TreeViewItem() { Header = item.Name, Tag = item };
+                    genreItem.Items.Add(tviArtist);
                 }
             }
         }
@@ -89,6 +95,45 @@ namespace ChinookUi
             }
 
             return new ChinookContext(builder.Options);
+        }
+
+        // Bestehenden Artist ändern
+        private void btnEditArtist_Click(object sender, RoutedEventArgs e)
+        {
+            TreeViewItem selected = (TreeViewItem)tviArtists.SelectedItem;
+
+            if (selected.Tag is Artist artist)
+            {
+                AddEditArtist dlgEditArtist = new AddEditArtist(artist);
+                if (dlgEditArtist.ShowDialog() == true)
+                {
+                    using ChinookContext context = GetContext(true, Console.WriteLine);
+                    // Geht, aber ungeschickt, wg. Abhängigkeiten
+                    //context.Attach(artist);
+                    //context.Entry(artist).State = EntityState.Modified;
+
+                    context.Artists.Update(artist); // State: Modified, abhängige Elemente kriegen je nach Zustand Modified, Added oder Unchanged
+
+                    context.SaveChanges(); // Änderung speichern
+
+                    FillArtistsForGenre((TreeViewItem)selected.Parent);
+                }
+            }
+        }
+
+        private void btnAddArtist_Click(object sender, RoutedEventArgs e)
+        {
+            Artist artist = new Artist();
+            AddEditArtist dlgAddArtist = new AddEditArtist(artist);
+
+            if (dlgAddArtist.ShowDialog() == true)
+            {
+                using ChinookContext context = GetContext(true, Console.WriteLine);
+
+                context.Artists.Add(artist);
+
+                context.SaveChanges();
+            }
         }
     }
 

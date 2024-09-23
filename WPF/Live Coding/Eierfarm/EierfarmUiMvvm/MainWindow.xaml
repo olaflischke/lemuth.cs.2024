@@ -33,7 +33,7 @@
             VerticalAlignment="Top"
             Orientation="Horizontal">
             <Label Content="Name" />
-            <TextBox Width="146" Text="{Binding SelectedItem.Name, ElementName=cbxTiere}" />
+            <TextBox Width="146" Text="{Binding SelectedItem.Name, ElementName=cbxTiere, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
 
         <StackPanel
@@ -63,7 +63,7 @@
             VerticalAlignment="Top"
             Orientation="Horizontal">
             <Label Content="Gewicht" />
-            <TextBox Width="146" Text="{Binding SelectedItem.Gewicht, ElementName=cbxTiere}" />
+            <TextBox Width="146" Text="{Binding SelectedItem.Gewicht, ElementName=cbxTiere, ValidatesOnDataErrors=True, NotifyOnValidationError=True, UpdateSourceTrigger=LostFocus}" />
         </StackPanel>
 
         <Button

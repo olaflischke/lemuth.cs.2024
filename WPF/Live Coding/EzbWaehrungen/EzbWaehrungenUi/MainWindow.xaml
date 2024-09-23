@@ -1,0 +1,79 @@
+﻿<Window
+    x:Class="EzbWaehrungenUi.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="clr-namespace:EzbWaehrungenUi.Converter"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:EzbWaehrungenUi"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:validation="clr-namespace:EzbWaehrungenUi.ValidationRules"
+    Title="MainWindow"
+    Width="400"
+    Height="233"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <converter:CurrencyConverter x:Key="cvCurrencyConverter" />
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <ListBox
+            x:Name="lbxHandelstage"
+            Grid.Column="0"
+            Margin="10"
+            DisplayMemberPath="Datum"
+            ItemsSource="{Binding Handelstage}" />
+        <DockPanel
+            Grid.Column="1"
+            Margin="10"
+            LastChildFill="True">
+            <DockPanel DockPanel.Dock="Top">
+                <TextBox
+                    x:Name="txtBetrag"
+                    Height="23"
+                    MinWidth="100"
+                    DockPanel.Dock="Left"
+                    TextAlignment="Right">
+                    <!--<TextBox.Text>
+                        <Binding
+                            ElementName="lbxWaehrungen"
+                            NotifyOnValidationError="True"
+                            Path="SelectedItem.EuroKurs"
+                            UpdateSourceTrigger="PropertyChanged"
+                            ValidatesOnDataErrors="True">
+                            <Binding.ValidationRules>
+                                <validation:DoubleRangeValidationRule MaxValue="100" MinValue="0" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>-->
+                </TextBox>
+                <TextBlock Height="23" DockPanel.Dock="Left">
+                    <TextBlock.Text>
+                        <MultiBinding
+                            Converter="{StaticResource cvCurrencyConverter}"
+                            ConverterCulture="DE"
+                            StringFormat="#,##0.00"
+                            UpdateSourceTrigger="PropertyChanged">
+                            <Binding ElementName="txtBetrag" Path="Text" />
+                            <Binding ElementName="lbxWaehrungen" Path="SelectedItem.EuroKurs" />
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+            </DockPanel>
+            <ListBox x:Name="lbxWaehrungen" ItemsSource="{Binding ElementName=lbxHandelstage, Path=SelectedItem.Waehrungen}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <Run Text="{Binding Symbol}" />
+                            <Run Text="{Binding EuroKurs}" />
+                        </TextBlock>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </DockPanel>
+    </Grid>
+
+
+</Window>

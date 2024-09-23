@@ -1,0 +1,6 @@
+Erweitere die EzbWaehrungenUI um die Möglichkeit, eigene Kurse einzugeben.
+(Peristierung in lokaler Datenbank nett, aber nicht unbedingt nötig).
+Wichtig:
+	ISO-Zeichen - genau 3 Buchstaben!
+	Eurokurs - nicht 0, nicht negativ
+	-> Validierung

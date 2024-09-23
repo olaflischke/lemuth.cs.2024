@@ -8,7 +8,7 @@ using System.Text;
 
 namespace EierfarmBl;
 
-public abstract class Gefluegel : IEiLeger, IGefluegel, IEigenschaftGeaendert, INotifyPropertyChanged
+public abstract class Gefluegel : IEiLeger, IGefluegel, IEigenschaftGeaendert, INotifyPropertyChanged, IDataErrorInfo
 {
     public event PropertyChangedEventHandler? PropertyChanged;
     private void OnPropertyChanged([CallerMemberName] string propName = "")
@@ -77,6 +77,36 @@ public abstract class Gefluegel : IEiLeger, IGefluegel, IEigenschaftGeaendert, I
             OnPropertyChanged();
         }
     }
+
+    #region IDataErrorInfo
+    public string Error { get; }
+
+    public string this[string propertyName]
+    {
+        get
+        {
+            string? result = null!;
+
+            if (propertyName == nameof(this.Name))
+            {
+                if (string.IsNullOrWhiteSpace(this.Name))
+                {
+                    result = "Name darf nicht leer bleiben!";
+                }
+            }
+
+            if (propertyName == nameof(this.Gewicht))
+            {
+                if (this.Gewicht <= 0 || this.Gewicht > 5000)
+                {
+                    result = "Gewicht muss görßer al 0 und kleiner als 5.000 sein.";
+                }
+            }
+
+            return result;
+        }
+    }
+    #endregion
 
     public abstract void Fressen();
     public abstract void EiLegen();

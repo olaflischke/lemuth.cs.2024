@@ -50,6 +50,21 @@
             </DataGrid>
         </Grid>
 
+        <DockPanel Grid.Row="0" LastChildFill="False">
+            <Button
+                x:Name="btnAddArtist"
+                Width="23"
+                Height="23"
+                Margin="3"
+                Content="+" Click="btnAddArtist_Click" />
+            <Button
+                x:Name="btnEditArtist"
+                Width="23" Click="btnEditArtist_Click"
+                Height="23"
+                Margin="3"
+                Content="..\" />
+        </DockPanel>
+
         <ComboBox
             x:Name="cbxAlbums"
             Grid.Row="0"
