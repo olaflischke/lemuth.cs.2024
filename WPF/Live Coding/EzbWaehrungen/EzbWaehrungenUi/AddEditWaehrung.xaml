@@ -1,0 +1,100 @@
+﻿<Window
+    x:Class="EzbWaehrungenUi.AddEditWaehrung"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:EzbWaehrungenUi"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:val="clr-namespace:EzbWaehrungenUi.ValidationRules"
+    Title="Währung bearbeiten"
+    Width="210"
+    Height="123"
+    WindowStartupLocation="CenterOwner"
+    WindowStyle="ToolWindow"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <!--  ToolTip mit Fehlermeldung an die Textbox  -->
+        <Style TargetType="{x:Type TextBox}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)[0].ErrorContent}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <!--  OK-Button disablen, wenn irgendwo ein Validation-Error  -->
+        <Style BasedOn="{StaticResource stStandardButton}" TargetType="{x:Type Button}">
+            <Style.Triggers>
+                <!--  Geht nicht  -->
+                <!--<Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="IsEnabled" Value="False" />
+                </Trigger>-->
+
+                <DataTrigger Binding="{Binding ElementName=txtSymbol, Path=(Validation.HasError)}" Value="true">
+                    <Setter Property="IsEnabled" Value="False" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding ElementName=txtEuroKurs, Path=(Validation.HasError)}" Value="true">
+                    <Setter Property="IsEnabled" Value="False" />
+                </DataTrigger>
+
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Canvas>
+        <Label
+            Canvas.Left="10"
+            Canvas.Top="11"
+            Content="Symbol" />
+        <Label
+            Canvas.Left="10"
+            Canvas.Top="34"
+            Content="1 EUR =" />
+        <TextBox
+            x:Name="txtSymbol" MaxLength="3"
+            Canvas.Left="70"
+            Canvas.Top="15"
+            Width="120">
+            <TextBox.Text>
+                <Binding
+                    NotifyOnValidationError="True"
+                    Path="Symbol"
+                    UpdateSourceTrigger="PropertyChanged"
+                    ValidatesOnDataErrors="True">
+                    <Binding.ValidationRules>
+                        <val:StringLengthValidationRule
+                            MaxLength="3"
+                            MinLength="3"
+                            ValidatesOnTargetUpdated="True" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <TextBox
+            x:Name="txtEuroKurs"
+            Canvas.Left="70"
+            Canvas.Top="38"
+            Width="120">
+            <TextBox.Text>
+                <Binding
+                    NotifyOnValidationError="True"
+                    Path="EuroKurs"
+                    UpdateSourceTrigger="PropertyChanged"
+                    ValidatesOnDataErrors="True">
+                    <Binding.ValidationRules>
+                        <val:DoubleRangeValidationRule
+                            MaxValue="1.7e308"
+                            MinValue="1e-12"
+                            ValidatesOnTargetUpdated="True" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <Button
+            Canvas.Left="109"
+            Canvas.Top="61"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Click="Button_Click"
+            Content="OK" />
+
+    </Canvas>
+</Window>

@@ -5,6 +5,11 @@
     xmlns:local="clr-namespace:EzbWaehrungenUi"
     StartupUri="MainWindow.xaml">
     <Application.Resources>
-
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="dicControlStyles.xaml" />
+                <ResourceDictionary Source="dicDataTypes.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

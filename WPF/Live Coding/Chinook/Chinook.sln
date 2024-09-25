@@ -5,9 +5,11 @@ VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChinookUi", "ChinookUi\ChinookUi.csproj", "{F8E8A8CC-062C-4228-9905-8E7AB29660CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChinookDal", "ChinookDal\ChinookDal.csproj", "{3B20C31D-B240-4C67-A3DA-951CD94F718D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChinookDal", "ChinookDal\ChinookDal.csproj", "{3B20C31D-B240-4C67-A3DA-951CD94F718D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChinookDalTests", "ChinookDalTests\ChinookDalTests.csproj", "{951177C8-B978-436A-AC92-357873FC3E00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChinookDalTests", "ChinookDalTests\ChinookDalTests.csproj", "{951177C8-B978-436A-AC92-357873FC3E00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChinookUiMvvm", "ChinookUiMvvm\ChinookUiMvvm.csproj", "{6A7B6A64-4A40-430A-B8FE-DC8034E3067C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{951177C8-B978-436A-AC92-357873FC3E00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{951177C8-B978-436A-AC92-357873FC3E00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{951177C8-B978-436A-AC92-357873FC3E00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A7B6A64-4A40-430A-B8FE-DC8034E3067C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A7B6A64-4A40-430A-B8FE-DC8034E3067C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A7B6A64-4A40-430A-B8FE-DC8034E3067C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A7B6A64-4A40-430A-B8FE-DC8034E3067C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

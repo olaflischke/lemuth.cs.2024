@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System.Collections.ObjectModel;
 using System.Runtime.CompilerServices;
 using System.Xml.Linq;
 
@@ -35,9 +36,9 @@ public class Archiv
         context.SaveChanges();
     }
 
-    public List<Handelstag>? Handelstage { get; set; }
+    public ObservableCollection<Handelstag>? Handelstage { get; set; }
 
-    private List<Handelstag>? GetData(string url)
+    private ObservableCollection<Handelstag>? GetData(string url)
     {
         try
         {
@@ -60,7 +61,7 @@ public class Archiv
             //    tage.Add(tag);
             //}
 
-            List<Handelstag> tage = q.ToList();
+            ObservableCollection<Handelstag> tage = new ObservableCollection<Handelstag>(q);
 
             return tage;
         }

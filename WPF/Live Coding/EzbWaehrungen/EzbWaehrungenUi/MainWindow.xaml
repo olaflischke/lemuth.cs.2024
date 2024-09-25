@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:converter="clr-namespace:EzbWaehrungenUi.Converter"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dal="clr-namespace:EzbWaehrungenDal;assembly=EzbWaehrungenDal"
     xmlns:local="clr-namespace:EzbWaehrungenUi"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:validation="clr-namespace:EzbWaehrungenUi.ValidationRules"
@@ -13,6 +14,13 @@
     mc:Ignorable="d">
     <Window.Resources>
         <converter:CurrencyConverter x:Key="cvCurrencyConverter" />
+
+        <!--  Lokal geht vor Global  -->
+        <Style BasedOn="{StaticResource stStandardButton}" TargetType="Button">
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="30" />
+        </Style>
+
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -23,7 +31,6 @@
             x:Name="lbxHandelstage"
             Grid.Column="0"
             Margin="10"
-            DisplayMemberPath="Datum"
             ItemsSource="{Binding Handelstage}" />
         <DockPanel
             Grid.Column="1"
@@ -49,7 +56,10 @@
                         </Binding>
                     </TextBox.Text>-->
                 </TextBox>
-                <TextBlock Height="23" DockPanel.Dock="Left">
+                <TextBlock
+                    Height="23"
+                    DockPanel.Dock="Left"
+                    TextAlignment="Right">
                     <TextBlock.Text>
                         <MultiBinding
                             Converter="{StaticResource cvCurrencyConverter}"
@@ -62,16 +72,17 @@
                     </TextBlock.Text>
                 </TextBlock>
             </DockPanel>
-            <ListBox x:Name="lbxWaehrungen" ItemsSource="{Binding ElementName=lbxHandelstage, Path=SelectedItem.Waehrungen}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock>
-                            <Run Text="{Binding Symbol}" />
-                            <Run Text="{Binding EuroKurs}" />
-                        </TextBlock>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+            <Button
+                x:Name="btnNeueWaehrung"
+                HorizontalAlignment="Center"
+                Click="btnNeueWaehrung_Click"
+                Content="+"
+                DockPanel.Dock="Bottom" />
+            <ListBox
+                x:Name="lbxWaehrungen"
+                DockPanel.Dock="Top"
+                ItemsSource="{Binding ElementName=lbxHandelstage, Path=SelectedItem.Waehrungen}" />
+
         </DockPanel>
     </Grid>
 

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumericUpDownDemo", "NumericUpDownDemo\NumericUpDownDemo.csproj", "{DEEFDF1F-E69F-40C4-BD38-79B2F916E043}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserControlLib", "UserControlLib\UserControlLib.csproj", "{DA1D5A70-F38E-445F-BC7F-80A1137F4FFE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DEEFDF1F-E69F-40C4-BD38-79B2F916E043}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEEFDF1F-E69F-40C4-BD38-79B2F916E043}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEEFDF1F-E69F-40C4-BD38-79B2F916E043}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEEFDF1F-E69F-40C4-BD38-79B2F916E043}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA1D5A70-F38E-445F-BC7F-80A1137F4FFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA1D5A70-F38E-445F-BC7F-80A1137F4FFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA1D5A70-F38E-445F-BC7F-80A1137F4FFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA1D5A70-F38E-445F-BC7F-80A1137F4FFE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9B903B9B-35D3-4821-BA3A-3BF578BC1079}
+	EndGlobalSection
+EndGlobal

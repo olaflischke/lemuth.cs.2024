@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -20,6 +21,8 @@ namespace EzbWaehrungenUi
         public MainWindow()
         {
             InitializeComponent();
+
+            this.Language = XmlLanguage.GetLanguage(Thread.CurrentThread.CurrentCulture.Name);
 
             try
             {
@@ -38,6 +41,22 @@ namespace EzbWaehrungenUi
             {
                 MessageBox.Show("Fehler beim Start.");
             }
+        }
+
+        private void btnNeueWaehrung_Click(object sender, RoutedEventArgs e)
+        {
+            Waehrung waehrnung = new Waehrung();
+
+            // Dialog instanziieren und aufrufen
+            AddEditWaehrung addWaehrung = new AddEditWaehrung(waehrnung);
+            // ShowDialog gibt das DialogResult zurück (siehe Button_Click in AddEditWaehrung.xaml.cs)
+            if (addWaehrung.ShowDialog() == true)
+            {
+                // Neue Währung dem gewählten Handelstag hinzufügen
+                Handelstag handelstag = lbxHandelstage.SelectedItem as Handelstag;
+                handelstag.Waehrungen.Add(waehrnung);
+            }
+
         }
     }
 }

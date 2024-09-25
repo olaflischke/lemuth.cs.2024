@@ -1,0 +1,17 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dal="clr-namespace:EzbWaehrungenDal;assembly=EzbWaehrungenDal">
+
+    <DataTemplate DataType="{x:Type dal:Handelstag}">
+        <TextBlock Text="{Binding Datum, StringFormat=dd.MM.yyyy}" />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type dal:Waehrung}">
+        <TextBlock>
+            <Run Text="{Binding Symbol}" />
+            <Run Text="{Binding EuroKurs, StringFormat=#\,##0.0000}" />
+        </TextBlock>
+    </DataTemplate>
+
+</ResourceDictionary>

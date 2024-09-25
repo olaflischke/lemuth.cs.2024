@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Xml.Linq;
 
 namespace EzbWaehrungenDal;
@@ -27,12 +28,12 @@ public class Handelstag
                                     Handelstag = this
                                 });
 
-        this.Waehrungen = q.ToList();
+        this.Waehrungen = new ObservableCollection<Waehrung>(q);
     }
 
     public int Id { get; set; }
 
-    public List<Waehrung> Waehrungen { get; set; } = new List<Waehrung>();
+    public ObservableCollection<Waehrung> Waehrungen { get; set; } = new ObservableCollection<Waehrung>();
 
     public DateTime Datum { get; set; }
 }

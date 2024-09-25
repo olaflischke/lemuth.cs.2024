@@ -10,6 +10,12 @@
     Height="400"
     d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}"
     mc:Ignorable="d">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="80" />
+            <Setter Property="Background" Value="Azure" />
+        </Style>
+    </Window.Resources>
     <Canvas>
         <StackPanel
             Canvas.Left="50"
@@ -70,7 +76,6 @@
             x:Name="btnNeuesHuhn"
             Canvas.Left="231"
             Canvas.Top="16"
-            Width="80"
             Height="23"
             Command="{Binding NeuesHuhnCommand}"
             Content="Neues Huhn" />
@@ -78,7 +83,6 @@
             x:Name="btnNeueGans"
             Canvas.Left="231"
             Canvas.Top="44"
-            Width="80"
             Height="23"
             Command="{Binding NeueGansCommand}"
             Content="Neue Gans" />
@@ -86,7 +90,6 @@
             x:Name="btnFuettern"
             Canvas.Left="231"
             Canvas.Top="100"
-            Width="80"
             Height="23"
             Command="{Binding FuetternCommand}"
             Content="Füttern" />
@@ -94,7 +97,6 @@
             x:Name="btnEiLegen"
             Canvas.Left="231"
             Canvas.Top="128"
-            Width="80"
             Height="23"
             Command="{Binding EiLegenCommand}"
             Content="Ei legen" />

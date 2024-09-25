@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="UserControlLib.NumericUpDown"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UserControlLib"
+             mc:Ignorable="d" 
+             d:DesignHeight="23" d:DesignWidth="65">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="18" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <TextBox
+            x:Name="txtValue"
+            Grid.RowSpan="2"
+            Grid.Column="0"
+            HorizontalContentAlignment="Right"
+            PreviewKeyDown="tvtValue_PreviewKeyDown"
+            PreviewTextInput="txtValue_PreviewTextInput"
+            TextChanged="txtValue_TextChanged" />
+
+        <Button
+            x:Name="btnUp"
+            Grid.Row="0"
+            Grid.Column="1"
+            Width="17"
+            Click="btnUp_Click"
+            Content="+"
+            FontSize="4.5" />
+        <Button
+            x:Name="btnDown"
+            Grid.Row="1"
+            Grid.Column="1"
+            Width="17"
+            Click="btnDown_Click"
+            Content="-"
+            FontSize="4.5" />
+
+    </Grid>
+</UserControl>

@@ -31,7 +31,7 @@ namespace EzbWaehrungenDalUnitTests
 
         private object? GetAttributeCount(string attributeName)
         {
-            return 61;
+            return 64;
         }
     }
 }
