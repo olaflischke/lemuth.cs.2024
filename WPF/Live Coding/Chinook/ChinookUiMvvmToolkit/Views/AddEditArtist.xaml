@@ -5,9 +5,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:ChinookUiMvvmToolkit.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:ChinookUiMvvmToolkit.ViewModels"
     Title="Künstler bearbeiten"
     Width="300"
     Height="100"
+    d:DataContext="{d:DesignInstance vm:AddEditArtistViewModel}"
     mc:Ignorable="d">
     <DockPanel LastChildFill="False">
         <DockPanel DockPanel.Dock="Top" LastChildFill="True">
@@ -26,7 +28,7 @@
             Width="120"
             Margin="10,5"
             HorizontalAlignment="Right"
-            Command="{Binding SaveCommand}"
+            Command="{Binding SaveArtistCommand}"
             Content="OK"
             DockPanel.Dock="Top" />
 

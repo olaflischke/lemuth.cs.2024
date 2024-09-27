@@ -9,27 +9,31 @@ using System.Windows.Input;
 
 namespace ChinookUiMvvmToolkit.ViewModels;
 
-public partial class MainWindowViewModel : ObservableRecipient //ObservableObject
+public partial class MainWindowViewModel : ObservableRecipient
 {
     ChinookDataService dataService; //= new ChinookDataService(Properties.Settings.Default.ChinookConnection);
 
     private ILogger logger;
     private readonly IMessenger messenger;
 
-    public MainWindowViewModel(ILogger logger, IMessenger messenger, ChinookDataService dataService)
+    public MainWindowViewModel(ILogger<MainWindowViewModel> logger, IMessenger messenger, ChinookDataService dataService)
     {
         this.logger = logger;
         this.messenger = messenger;
         this.dataService = dataService;
 
-        //messenger.Register<MainWindowViewModel, ArtistChangedMessage>(this, (r, m) => r.Receive(m));
-
+        messenger.Register<MainWindowViewModel, ArtistChangedMessage>(this, (recipient, message) => recipient.Receive(message));
 
         this.AddArtistCommand = new RelayCommand(AddArtist);
 
         this.GenresWithArtists = dataService.GetGenresWithArtists();
 
         logger.LogInformation("MainWindowViewModel initialisiert.");
+    }
+
+    private void Receive(ArtistChangedMessage m)
+    {
+        dataService.UpdateArtist(this.SelectedArtist);
     }
 
     private void AddArtist()

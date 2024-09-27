@@ -12,10 +12,12 @@ public partial class AddEditArtist : Window
 {
     private readonly IMessenger messenger;
 
-    public AddEditArtist(Artist artist, CommunityToolkit.Mvvm.Messaging.IMessenger messenger)
+    public AddEditArtist(Artist artist, IMessenger messenger)
     {
         InitializeComponent();
 
+        this.messenger = messenger;
+        
         var viewModel = new AddEditArtistViewModel(artist, messenger);
         viewModel.CloseAction = () =>
         {
@@ -24,6 +26,6 @@ public partial class AddEditArtist : Window
         };
 
         this.DataContext = viewModel;
-        this.messenger = messenger;
+
     }
 }

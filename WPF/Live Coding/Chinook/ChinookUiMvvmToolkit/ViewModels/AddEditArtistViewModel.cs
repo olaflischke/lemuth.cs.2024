@@ -13,15 +13,16 @@ using System.Windows.Input;
 
 namespace ChinookUiMvvmToolkit.ViewModels
 {
-    public class AddEditArtistViewModel : ObservableObject
+    public partial class AddEditArtistViewModel : ObservableObject
     {
         public AddEditArtistViewModel(Artist artist, IMessenger messenger)
         {
             this.Artist = artist;
             this.messenger = messenger;
-            this.SaveCommand = new RelayCommand(SaveArtist);
+            //this.SaveCommand = new RelayCommand(SaveArtist);
         }
 
+        [RelayCommand]
         private void SaveArtist()
         {
             messenger.Send(new ArtistChangedMessage());
@@ -38,7 +39,7 @@ namespace ChinookUiMvvmToolkit.ViewModels
             set { SetProperty(ref _artist, value); }
         }
 
-        public ICommand SaveCommand;
+        //public ICommand SaveCommand;
         private readonly IMessenger messenger;
     }
 }
