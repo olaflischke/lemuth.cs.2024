@@ -1,8 +1,9 @@
 ﻿<Application
-    x:Class="ChinookUiMvvm.App"
+    x:Class="ChinookUi.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:ChinookUiMvvm">
+    xmlns:local="clr-namespace:ChinookUi"
+    StartupUri="Views\MainWindow.xaml">
     <Application.Resources>
 
     </Application.Resources>

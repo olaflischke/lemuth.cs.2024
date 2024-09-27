@@ -1,0 +1,34 @@
+﻿<Window
+    x:Class="ChinookUiMvvmToolkit.Views.AddEditArtist"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ChinookUiMvvmToolkit.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Künstler bearbeiten"
+    Width="300"
+    Height="100"
+    mc:Ignorable="d">
+    <DockPanel LastChildFill="False">
+        <DockPanel DockPanel.Dock="Top" LastChildFill="True">
+            <Label
+                Margin="10,0"
+                Content="Name:"
+                DockPanel.Dock="Left" />
+            <TextBox
+                Margin="10,5"
+                DockPanel.Dock="Left"
+                Text="{Binding Artist.Name}" />
+        </DockPanel>
+        <Button
+            Canvas.Left="130"
+            Canvas.Top="41"
+            Width="120"
+            Margin="10,5"
+            HorizontalAlignment="Right"
+            Command="{Binding SaveCommand}"
+            Content="OK"
+            DockPanel.Dock="Top" />
+
+    </DockPanel>
+</Window>

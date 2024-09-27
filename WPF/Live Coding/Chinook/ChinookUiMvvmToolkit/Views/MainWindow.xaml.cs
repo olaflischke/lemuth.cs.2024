@@ -1,5 +1,8 @@
 ﻿using ChinookDal.Model;
-using ChinookUiMvvm.ViewModels;
+using ChinookUiMvvmToolkit.Infrastructure;
+using ChinookUiMvvmToolkit.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ChinookUiMvvm.Views
+namespace ChinookUiMvvmToolkit.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -21,6 +24,8 @@ namespace ChinookUiMvvm.Views
         public MainWindow()
         {
             InitializeComponent();
+
+            //ILogger logger = new FileLogger(@"c:\tmp\lemuth.log");
 
             this.DataContext = App.Current.Services.GetService(typeof(MainWindowViewModel));
         }
@@ -34,5 +39,6 @@ namespace ChinookUiMvvm.Views
                 viewModel.SelectedArtist = selected;
             }
         }
+
     }
 }

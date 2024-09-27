@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ChinookUiMvvm.Properties {
+namespace ChinookUiMvvmToolkit.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -32,6 +32,15 @@ namespace ChinookUiMvvm.Properties {
         public string ChinookConnection {
             get {
                 return ((string)(this["ChinookConnection"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("c:\\tmp\\lemuth2.log")]
+        public string LogPath {
+            get {
+                return ((string)(this["LogPath"]));
             }
         }
     }

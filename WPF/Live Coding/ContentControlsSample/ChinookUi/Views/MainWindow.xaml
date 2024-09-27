@@ -1,0 +1,23 @@
+﻿<Window
+    x:Class="ChinookUi.Views.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ChinookUi"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Chinook"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d" WindowStyle="None" WindowState="Maximized">
+    <DockPanel LastChildFill="True">
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_View">
+                <MenuItem Command="{Binding ShowArtistBrowserCommand}" Header="_Artists" />
+                <MenuItem Command="{Binding ShowCustomerBrowserCommand}" Header="_Customers" />
+                <Separator />
+                <MenuItem Command="{Binding ExitCommand}" Header="_Exit" />
+            </MenuItem>
+        </Menu>
+        <ContentControl Content="{Binding View}" />
+    </DockPanel>
+</Window>

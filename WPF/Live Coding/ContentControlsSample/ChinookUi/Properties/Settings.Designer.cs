@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ChinookUiMvvm.Properties {
+namespace ChinookUi.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -25,7 +25,6 @@ namespace ChinookUiMvvm.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Chinook;Integrated Security=Tr" +
             "ue;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application I" +
             "ntent=ReadWrite;Multi Subnet Failover=False")]

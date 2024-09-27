@@ -9,7 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChinookDal", "ChinookDal\Ch
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChinookDalTests", "ChinookDalTests\ChinookDalTests.csproj", "{951177C8-B978-436A-AC92-357873FC3E00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChinookUiMvvm", "ChinookUiMvvm\ChinookUiMvvm.csproj", "{6A7B6A64-4A40-430A-B8FE-DC8034E3067C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChinookUiMvvm", "ChinookUiMvvm\ChinookUiMvvm.csproj", "{6A7B6A64-4A40-430A-B8FE-DC8034E3067C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChinookDataAccess", "ChinookDataAccess\ChinookDataAccess.csproj", "{E05CB2C1-5CE5-4AC8-9F69-B3BA09516C65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChinookDataAccessUnitTests", "ChinookDataAccessUnitTests\ChinookDataAccessUnitTests.csproj", "{CF9AC84D-0124-4D47-BDA8-54D2DD749EEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChinookUiMvvmToolkit", "ChinookUiMvvmToolkit\ChinookUiMvvmToolkit.csproj", "{B8CB7087-6452-47B5-B97E-C19D8B5C400A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +39,18 @@ Global
 		{6A7B6A64-4A40-430A-B8FE-DC8034E3067C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A7B6A64-4A40-430A-B8FE-DC8034E3067C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A7B6A64-4A40-430A-B8FE-DC8034E3067C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E05CB2C1-5CE5-4AC8-9F69-B3BA09516C65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E05CB2C1-5CE5-4AC8-9F69-B3BA09516C65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E05CB2C1-5CE5-4AC8-9F69-B3BA09516C65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E05CB2C1-5CE5-4AC8-9F69-B3BA09516C65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF9AC84D-0124-4D47-BDA8-54D2DD749EEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF9AC84D-0124-4D47-BDA8-54D2DD749EEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF9AC84D-0124-4D47-BDA8-54D2DD749EEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF9AC84D-0124-4D47-BDA8-54D2DD749EEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8CB7087-6452-47B5-B97E-C19D8B5C400A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8CB7087-6452-47B5-B97E-C19D8B5C400A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8CB7087-6452-47B5-B97E-C19D8B5C400A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8CB7087-6452-47B5-B97E-C19D8B5C400A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

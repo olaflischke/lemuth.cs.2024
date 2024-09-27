@@ -1,6 +1,10 @@
 ﻿using ChinookDal.Model;
-using ChinookUiMvvm.ViewModels;
+using ChinookUi.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -11,23 +15,22 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ChinookUiMvvm.Views
+namespace ChinookUi.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaktionslogik für ArtistsBrowser.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ArtistsBrowser : UserControl
     {
-        public MainWindow()
+        public ArtistsBrowser()
         {
             InitializeComponent();
-
-            this.DataContext = App.Current.Services.GetService(typeof(MainWindowViewModel));
+            this.DataContext = new ArtistsBrowserViewModel();
         }
 
         private void tviArtists_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-            MainWindowViewModel? viewModel = this.DataContext as MainWindowViewModel;
+            ArtistsBrowserViewModel? viewModel = this.DataContext as ArtistsBrowserViewModel;
 
             if (viewModel != null && e.NewValue is Artist selected)
             {

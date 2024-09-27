@@ -1,38 +1,55 @@
-﻿using ChinookDal.Model;
-using ChinookUiMvvm.Model;
+﻿using dal = ChinookDal.Model; // Benannte Namespaces, nützlich bei Doppeldeutigkeiten
+using mdl = ChinookDataAccess.Model;
 using Microsoft.EntityFrameworkCore;
 using System.Windows.Data;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using ChinookDal.Model;
+using ChinookUiMvvm.Views;
+using ChinookDataAccess; // Vorsicht: ViewModel kennt Views!
 
 namespace ChinookUiMvvm.ViewModels;
 
-public class MainWindowViewModel
+public class MainWindowViewModel : INotifyPropertyChanged
 {
-    private Artist selectedArtist;
+    private dal.Artist? _selectedArtist;
+    private dal.Album? _selectedAlbum;
 
-    public MainWindowViewModel()
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    private ChinookDataService dataService;
+
+    private void OnPropertyChanged([CallerMemberName] string propertyName = "")
     {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public MainWindowViewModel(ChinookDataService dataService)
+    {
+        this.dataService = dataService;
+
+        //this.dataService = new ChinookDataService(Properties.Settings.Default.ChinookConnection);
+
         this.AddArtistCommand = new RelayCommand(a => AddArtist(), p => CanAddArtist());
         this.EditArtistCommand = new RelayCommand(a => EditArtist(), p => CanEditArtist());
 
-        using ChinookContext context = GetContext(noTracking: true);
 
-        var genresWithArtists = context.Genres.Select(g => new Model.Genre()
-        {
-            Name = g.Name,
-            Artists = context.Tracks.Where(t => t.GenreId == g.GenreId).Select(t => t.Album.Artist).Distinct().ToList()
-        });
-
-        this.GenresWithArtists = genresWithArtists.ToList();
+        this.GenresWithArtists = dataService.GetGenresWithArtists();
     }
 
     private void EditArtist()
     {
-        throw new NotImplementedException();
+        // Für einen kleinen Dialog kann ShowDialog hier erlaubt werden, trotz MVVM
+        AddEditArtist editArtist = new AddEditArtist(this.SelectedArtist);
+        if (editArtist.ShowDialog() == true)
+        {
+            dataService.UpdateArtist(this.SelectedArtist);
+        }
     }
 
     private bool CanEditArtist()
     {
-        throw new NotImplementedException();
+        return this.SelectedArtist != null;
     }
 
     private void AddArtist()
@@ -42,7 +59,7 @@ public class MainWindowViewModel
 
     private bool CanAddArtist()
     {
-        throw new NotImplementedException();
+        return true;
     }
 
     public RelayCommand AddArtistCommand { get; set; }
@@ -51,52 +68,46 @@ public class MainWindowViewModel
     /// <summary>
     /// Enthält alle Genres mit den jew. dazugeh. Künstlern
     /// </summary>
-    public List<Model.Genre> GenresWithArtists { get; set; }
+    public List<mdl.Genre> GenresWithArtists { get; set; }
 
-    public Artist SelectedArtist
+    public dal.Artist SelectedArtist
     {
         get
         {
-            return selectedArtist;
+            return _selectedArtist;
         }
         set
         {
-            using ChinookContext context = GetContext(noTracking: true);
-            value.Albums = context.Albums.Where(al => al.ArtistId == value.ArtistId).ToList();
+            if (value != null)
+            {
+                value.Albums = dataService.GetAlbumsForArtist(value);
+            }
+            _selectedArtist = value;
 
-            selectedArtist = value;
-
-            // TODO: OnPropertyChanged!
+            OnPropertyChanged();
         }
     }
-    public Album SelectedAlbum { get; set; }
 
 
-
-    private ChinookContext GetContext(bool noTracking = false, Action<string> logAction = null)
+    public dal.Album? SelectedAlbum
     {
-        string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Chinook;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
-
-        //DbContextOptionsBuilder<ChinookContext> builder = new DbContextOptionsBuilder<ChinookContext>()
-        //                                                        .UseSqlServer(Properties.Settings.Default.ChinookConnection);
-        DbContextOptionsBuilder<ChinookContext> builder = new DbContextOptionsBuilder<ChinookContext>()
-                                                                .UseSqlServer(connectionString);
-
-        if (noTracking)
+        get
         {
-            builder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+            return _selectedAlbum;
         }
-        else
+        set
         {
-            builder.UseQueryTrackingBehavior(QueryTrackingBehavior.TrackAll);
-        }
+            _selectedAlbum = value;
+            if (_selectedAlbum != null)
+            {
+                _selectedAlbum.Tracks = dataService.GetTracksForAlbum(_selectedAlbum);
+            }
 
-        if (logAction != null)
-        {
-            builder.LogTo(logAction, Microsoft.Extensions.Logging.LogLevel.Information);
+            OnPropertyChanged();
         }
-
-        return new ChinookContext(builder.Options);
     }
+
+
+
 
 }
